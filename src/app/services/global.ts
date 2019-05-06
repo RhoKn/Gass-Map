@@ -3,14 +3,9 @@ export const global = {
     createUserUri   : 'users/register',
     loginUri        :  'users/login',
     uriRoutes   :   {
-                        users:  'users/',
-                        pTypes: 'pTypes/',
-                        products:  'products/',
-                        dTypes:  'dTypes/',
-                        dishes:  'dishes/'
+                        users:  'users/'
                     },
     uriMethods   :   {
-                        create:  'create',
                         viewAll: 'all',
                         viewOne:  'view/',
                         update:  'update/',

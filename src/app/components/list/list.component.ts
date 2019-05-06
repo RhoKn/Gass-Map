@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {RestService} from '../../rest.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-list',
@@ -13,11 +14,13 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    /*this.rest.getAllObjects('https://api.datos.gob.mx/v1/precio.gasolina.publico').then(data => {
+    this.rest.getAllObjects('https://api.datos.gob.mx/v1/precio.gasolina.publico').then(data => {
+      if(data instanceof HttpErrorResponse){
+        console.log(this.rest.httperrorHandling((data)).message);
+      }else{
         this.requests = data.results;
-
-        console.log(this.requests);
-      });*/
+      }
+    });
   }
 
 }

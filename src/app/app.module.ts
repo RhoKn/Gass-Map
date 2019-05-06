@@ -14,8 +14,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ListComponent } from './components/list/list.component';
-import { ListUsersComponent } from './components/user/list-users/list-users.component';
-import { CreateUserComponent } from './components/user/create-user/create-user.component';
+
+
 
 
 @NgModule({
@@ -24,8 +24,6 @@ import { CreateUserComponent } from './components/user/create-user/create-user.c
     LoginComponent,
     NotFoundComponent,
     ListComponent,
-    ListUsersComponent,
-    CreateUserComponent,
 
   ],
   imports: [
