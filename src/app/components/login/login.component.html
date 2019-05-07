@@ -34,7 +34,9 @@
                   <hr>
                   <ngb-alert *ngIf="logInMessage" type="danger" (close)="logInMessage = null">{{ logInMessage }}</ngb-alert>  
                 </form>
-
+                <div class="text-center">
+                    <a class="small" [routerLinkActive]="['active']" [routerLink]="['/register']">Ya tienes cuenta? Inicia sesión!</a>
+                  </div>
               </div>
             </div>
           </div>

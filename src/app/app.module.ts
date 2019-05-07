@@ -15,6 +15,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ListComponent } from './components/list/list.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -27,6 +28,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
     NotFoundComponent,
     ListComponent,
     FavoritesComponent,
+    RegisterComponent,
 
 
   ],
