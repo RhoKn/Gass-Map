@@ -51,5 +51,9 @@ export class AppComponent implements OnInit {
     setUserStats(){
       this.user = this.auxS.decodeToken(this.cookieS.getCookie(global.cookiesDef.token));
     }
-    
+
+    logOut(){
+      this.cookieS.deleteCookie(global.cookiesDef.token);
+      this.router.navigate(['/login']);
+    }
 }

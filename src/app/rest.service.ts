@@ -17,35 +17,28 @@ export class RestService {
   ) {
   }
 
-  createObject(route, object): Observable<any> {
-    console.log("Objecto" + object);
+  async createObject(route, object) {
+    let res;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post<any>(global.url + route, JSON.stringify(object), { headers: headers }).pipe(
-      tap((newObject) => console.log(`added product w/ id=${newObject.id}`)),
-      catchError(this.handleError<any>('addProduct'))
-    );
-  }
-
-/*
-
-const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    let res;
     try {
-      res = await this.http.post<any>(global.url + route, JSON.stringify(user), { headers: headers }).toPromise();
+      this.http.post<any>(global.url + route, JSON.stringify(object), { headers: headers }).toPromise();
     } catch (error) {
       res = error;
     }
     return res;
+  }
 
-
-*/
-
-
-
+  async getApiObjects() {
+    let res;
+    try {
+    res = await this.http.get<any>(global.getApisObject).toPromise();
+  } catch (error) {
+    res = error;
+  }
+  return res;
+}
 
   async getAllObjects(route) {
     let res;
