@@ -32,5 +32,12 @@ export class FavoritesComponent implements OnInit {
     });
   }
 
+  delFav(index){
+    this.rest.deleteObject(global.uriRoutes.favorites + global.uriMethods.delete, this.requests[index]._id).then( data => {
+      this.requests.splice(index,1);
+    }
+    );
+  }
+
 }
 

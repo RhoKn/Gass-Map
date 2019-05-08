@@ -65,14 +65,17 @@ export class RestService {
     );
   }
 
-  deleteObject(route, id): Observable<any> {
+  async deleteObject(route, id) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.delete<any>(global.url + route + id, { headers: headers }).pipe(
-      tap(_ => console.log(`deleted object id=${id}`)),
-      catchError(this.handleError<any>('deleteObject'))
-    );
+    let res;
+    try {
+      res = this.http.delete<any>(global.url + route + id, { headers: headers }).toPromise();
+    } catch (error) {
+      res = error;
+    }
+    return res;
   }
 
   //Login

@@ -40,7 +40,7 @@ export class ListComponent implements OnInit {
       if(data instanceof HttpErrorResponse){
         console.log(this.rest.httperrorHandling((data)).message);
       }else{
-        console.log(data);
+        this.requests.splice(gas,1);
       }
     });
     console.log(this.requests[gas]);
