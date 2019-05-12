@@ -24,6 +24,47 @@ export class ListComponent implements OnInit {
         console.log(this.rest.httperrorHandling((data)).message);
       }else{
         console.log(data);
+        let numeroRegex = /\No\.+.+[0-9]+/;
+        let coloniaRegex = /\Col+[^a-np-z]+.+/;
+        let calleRegex = /\No\.+.+[0-9]+.+/;
+
+        let colonia;
+        let numero;
+        let calle;
+        let ciudad;
+
+        data.results.forEach(element => {
+
+          element.colonia = element.calle.replace(calleRegex, "");
+
+          numero = numeroRegex.exec(data.calle);
+
+          if(!numero){
+            numero = "S/N";
+          }
+          
+          numero = numero.toString();
+
+          colonia = calleRegex.exec(data.calle);
+
+          if(!colonia){
+            colonia = "Not Available";
+          }else{
+            colonia = colonia.toString();
+            colonia = colonia.replace(numeroRegex, "");
+            colonia = colonia.replace("  ", "");
+          }
+
+          if(colonia == "Not Available"){
+            if(coloniaRegex.test(data.calle)){
+              colonia = coloniaRegex.exec(data.calle);
+              colonia = colonia.toString();
+
+              calle = calle.replace(colonia, "");
+            }
+          }
+
+        });
         this.requests = data.results;
       }
     });

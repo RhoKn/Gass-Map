@@ -3,6 +3,7 @@ export const global = {
     createUserUri   : 'users/register',
     loginUri        :  'users/login',
     getApisObject   : 'https://api.datos.gob.mx/v2/precio.gasolina.publico',
+    getOurData      : 'localhost:3000/gasStations/all',
     uriRoutes   :   {
                         users:  'users/',
                         favorites: 'favs/'

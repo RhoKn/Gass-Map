@@ -1,0 +1,75 @@
+.center {
+  text-align: center;
+}
+
+.header{
+  font-family: Roboto;
+  font-size: 12px;
+}
+
+.name {
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  color: #03C891;
+}
+
+.buttom-margin{
+  margin-bottom: 30px;
+}
+
+.rectangle {
+  
+  width:100%;
+  height:100%;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+.rectangle-green {
+  background-color:#4ACC3F;
+}
+
+.rectangle-red {
+  background-color:#CC3F3F;
+}
+
+.rectangle-black {
+  background-color:#323A31;
+}
+
+.rectangle-green-top {
+  background-color:#3CA333;
+}
+
+.rectangle-red-top {
+  background-color:#A23333;
+}
+
+.rectangle-black-top {
+  background-color:#000000;
+}
+
+.top-rectangle {
+  border-radius: 20px 20px 0 0;
+}
+
+.text-white {
+    font-family: Roboto;
+    font-size: 25px;
+    text-decoration-color: white;
+}
+
+h1.price {
+  font-family: Roboto;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.card{
+  box-shadow: 5px 5px 5px grey;
+  font-size: 12px;
+  height: 100%;
+}

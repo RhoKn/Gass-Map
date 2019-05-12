@@ -1,32 +1,50 @@
 <ng-container *ngFor="let rq of requests, let i = index">
-  <div class="col-sm-6 float-left mb-5">
+  <div class="col-sm-6 float-left mb-5 body">
     <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{rq.calle}}</h5>
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-              <tr>
-                  <th>Magna</th>
-                  <th>Premium</th>
-                  <th>Dieasel</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>${{rq.regular}} MXN.</td>
-                  <td>${{rq.premium}} MXN.</td>
-                  <ng-container *ngIf="rq.dieasel == ''">
-                    <td>$0.00 MXN.</td>
-                  </ng-container>
-                  <ng-container *ngIf="rq.dieasel != ''">
-                    <td>${{rq.dieasel}} MXN.</td>
-                  </ng-container>
-              </tr>
-          </tbody>
-      </table>
-      <a class="btn btn-primary float-right">Maps</a>
-      <a (click)="addToFavorite(i)"  class="btn btn-secundary float-left mr-3">Añadir a favoritos</a>
+        <div class="card-body">
+          <div class="container">
+            <div class="row buttom-margin">
+              <div class="col col-md-4">
+                <h3 class="name">{{rq.razonsocial}}</h3>
+              </div>
+              <div class="col col-md-6 header">
+                <h4>{{rq.colonia}}</h4>
+              </div>
+              <div class="col col-md-2">
+                <span class="header">1.09 km.</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 center">
+                <div class="rectangle rectangle-green">
+                  <div class="top-rectangle rectangle-green-top">
+                    <h3 class="text-white">Magna</h3>
+                  </div>
+                  <h1 class="text-white price">${{rq.regular || " N/A"}}</h1>
+                </div>
+              </div>
+              <div class="col-md-4 center">
+                <div class="rectangle rectangle-red">
+                  <div class="top-rectangle rectangle-red-top">
+                    <h3 class="text-white">Premium</h3>
+                  </div>
+                  <h1 class="text-white price">${{rq.premium || " N/A"}}</h1>
+                </div>
+              </div>
+              <div class="col-md-4 center">
+                <div class="rectangle rectangle-black">
+                  <div class="top-rectangle rectangle-black-top">
+                    <h3 class="text-white">Diesel</h3>
+                  </div>
+                  <h1 class="text-white price">${{rq.dieasel || " N/A"}}</h1>
+                </div>
+              </div>
+            </div>
+            <br>
+            <a class="btn btn-primary float-right">Maps</a>
+            <a (click)="addToFavorite(i)"  class="btn btn-secundary float-left mr-3">Añadir a favoritos</a>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
 </ng-container>
