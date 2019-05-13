@@ -7,19 +7,17 @@ module.exports = {
         .waitForElementVisible('input[type=text]', 1000)
         .waitForElementVisible('input[type=password]', 1000)
         .setValue('input[type=text]', 'admin')
-        .setValue('input[type=password]', 'admin')
-        .useXpath()     // every selector now must be XPath
-        .click("//a[text()='Login']")
+        .setValue('input[type=password]', '1')
+        .click(".btn-primary")
     },
     'Add To Favorite Test': function(browser){
         browser
-        .waitForElementVisible('body', 2000)
-        .click("//a[normalize-space()='Agregar a favoritos']")
-        .useCss()
+        .waitForElementVisible('body')
+        .waitForElementVisible(".nav-link")
         .click(".nav-link")
-        .useXpath()     // every selector now must be XPath
-        .click("//a[text()='Favoritos']")
-        .useCss()
+        .useXpath()
+        .click("//a[@id='0']")
+        .click("//a[@id='favoritos']")
         //.end() // This must be called to close the browser at the end
     }
 }
