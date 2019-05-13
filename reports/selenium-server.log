@@ -1,0 +1,2 @@
+19:43:58.595 INFO [GridLauncherV3.parse] - Selenium server version: 4.0.0-alpha-1, revision: d1d3728cae
+19:43:59.103 INFO [GridLauncherV3.lambda$buildLaunchers$3] - Launching a standalone Selenium Server on port 4444

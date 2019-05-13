@@ -1,5 +1,5 @@
-// Get Selenium and the drivers
-var seleniumServer = require('selenium-server');
+// Get the drivers
+//var seleniumServer = require('selenium-server');
 var chromedriver = require('chromedriver');
 //var geckodriver = require('geckodriver');
 
@@ -11,11 +11,11 @@ var config = {
   output_folder: 'reports', // Where to output the test reports
   selenium: {
     // Information for selenium, such as the location of the drivers ect.
-    start_process : false,
-    log_path : "./logs/",
+    start_process: true,
+    server_path: './lib/selenium-server-standalone-4.0.0-alpha-1.jar',
+    port: 4444, // Standard selenium port
     cli_args: {
-      'webdriver.chrome.driver': chromedriver.path
-      //'webdriver.gecko.driver': geckodriver.path
+      'webdriver.chrome.driver': chromedriver.path,
     }
   },
   test_workers: {

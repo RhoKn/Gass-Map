@@ -13,7 +13,7 @@
   
     
     <testcase
-      name="Title is Bing" classname="funcionaltest">
+      name="Functional Test" classname="funcionaltest">
       <skipped />
     </testcase>
     
