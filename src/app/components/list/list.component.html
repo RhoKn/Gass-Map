@@ -2,7 +2,9 @@
   <div class="col-sm-6 float-left mb-5">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">{{rq.calle}}</h5>
+        <a routerLink="/gas/{{rq._id}}" class="card-title">{{rq.street}}</a>
+        <br>
+    
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
               <tr>
@@ -15,17 +17,17 @@
               <tr>
                   <td>${{rq.regular}} MXN.</td>
                   <td>${{rq.premium}} MXN.</td>
-                  <ng-container *ngIf="rq.dieasel == ''">
-                    <td>$0.00 MXN.</td>
+                  <ng-container *ngIf="rq.dieasel">
+                      <td>${{rq.diesel}} MXN.</td>
                   </ng-container>
-                  <ng-container *ngIf="rq.dieasel != ''">
-                    <td>${{rq.dieasel}} MXN.</td>
+                  <ng-container *ngIf="!rq.dieasel">
+                    <td> N/A</td>
                   </ng-container>
               </tr>
           </tbody>
       </table>
-      <a class="btn btn-primary float-right">Maps</a>
-      <a (click)="addToFavorite(i)"  class="btn btn-secundary float-left mr-3">Añadir a favoritos</a>
+      <a href="" onclick="return !1;" class="btn btn-primary float-right">Maps</a>
+      <a href="" onclick="return !1;" (click)="addToFavorite(i)"  class="btn btn-secundary float-left mr-3 text-primary">Añadir a favoritos</a>
       </div>
     </div>
   </div>

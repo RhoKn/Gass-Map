@@ -5,9 +5,12 @@ export const global = {
     getApisObject   : 'https://api.datos.gob.mx/v2/precio.gasolina.publico',
     uriRoutes   :   {
                         users:  'users/',
-                        favorites: 'favs/'
+                        favorites: 'favs/',
+                        gasStations: 'gasStations/',
+                        comments    : 'comments/'
                     },
     uriMethods   :   {
+                        viewAllBdGas: 'allBd',
                         viewAll: 'all',
                         viewOne:  'view/',
                         update:  'update/',

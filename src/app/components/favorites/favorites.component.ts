@@ -21,7 +21,6 @@ export class FavoritesComponent implements OnInit {
 
   ngOnInit() {
     const user = this.auxS.decodeToken(this.cookieS.getCookie(global.cookiesDef.token));
-    console.log(user);
     this.rest.getAllObjects(global.uriRoutes.favorites + global.uriMethods.viewAll + '/' + user.sub).then(data => {
       if(data instanceof HttpErrorResponse){
         console.log(this.rest.httperrorHandling((data)).message);
