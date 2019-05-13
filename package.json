@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "unitTesting": "./node_modules/mocha/bin/mocha",
+    "functionalTesting": "nightwatch -c src/tests/nightwatch.conf.js -e chrome",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -29,6 +30,7 @@
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.3.1",
     "bootstrap-select": "^1.13.7",
+    "chai-http": "^4.3.0",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
