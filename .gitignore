@@ -47,3 +47,5 @@ Thumbs.db
 chromedriver.log
 geckodriver.log
 /tests_output
+/reports
+selenium_server.log
