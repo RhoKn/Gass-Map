@@ -6,7 +6,7 @@ var chromedriver = require('chromedriver');
 var config = {
   src_folders: [
     // Folders with tests
-    'src/tests/'
+    'src/tests/functional/'
   ],
   output_folder: 'reports', // Where to output the test reports
   selenium: {
