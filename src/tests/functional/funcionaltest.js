@@ -13,11 +13,9 @@ module.exports = {
     'Add To Favorite Test': function(browser){
         browser
         .waitForElementVisible('body')
-        .waitForElementVisible(".nav-link")
-        .click(".nav-link")
+        //.click(".collapse-menu-custom")
         .useXpath()
-        .click("//a[@id='0']")
-        .click("//a[@id='favoritos']")
+        .click("//a[@id='587fbd68edfe99480a072f14']")
         //.end() // This must be called to close the browser at the end
     }
 }
