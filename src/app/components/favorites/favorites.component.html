@@ -1,27 +1,32 @@
-<ng-container *ngFor="let rq of requests, let i= index">
-  <div class="col-sm-6 float-left mb-5">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Gasolinera favorita</h5>
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-              <tr>
-                  <th>Magna</th>
-                  <th>Premium</th>
-                  <th>Dieasel</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>0 MXN.</td>
-                  <td>0 MXN.</td>
-                  <td>0 MXN.</td>
-              </tr>
-          </tbody>
-      </table>
-      <a href="#" class="btn btn-primary float-right">Maps</a>
-      <a (click)="delFav(i)" class="btn btn-secundary float-left mr-3">Eliminar de favoritos</a>
-      </div>
-    </div>
-  </div>
-</ng-container>
+<ng-container *ngFor="let rq of requests, let i = index">
+        <div class="col-sm-6 float-left mb-5">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{rq.gasolinera.street}}</h5>
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Magna</th>
+                        <th>Premium</th>
+                        <th>Dieasel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${{rq.gasolinera.regular}} MXN.</td>
+                        <td>${{rq.gasolinera.premium}} MXN.</td>
+                        <ng-container *ngIf="rq.gasolinera.dieasel">
+                            <td>${{rq.gasolinera.diesel}} MXN.</td>
+                        </ng-container>
+                        <ng-container *ngIf="!rq.gasolinera.dieasel">
+                          <td> N/A</td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="" onclick="return !1;" class="btn btn-primary float-right">Maps</a>
+            <a href="" onclick="return !1;" (click)="delFav(i)"  class="btn btn-secundary float-left mr-3 text-primary">Eliminar de favoritos</a>
+            </div>
+          </div>
+        </div>
+      </ng-container>

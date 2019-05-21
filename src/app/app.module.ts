@@ -17,6 +17,8 @@ import { ListComponent } from './components/list/list.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
+import { GasComponent } from './components/gas/gas.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -31,6 +33,7 @@ import { ListUsersComponent } from './components/list-users/list-users.component
     FavoritesComponent,
     RegisterComponent,
     ListUsersComponent,
+    GasComponent,
 
 
   ],
@@ -41,7 +44,10 @@ import { ListUsersComponent } from './components/list-users/list-users.component
     routing,
     HttpClientModule,
     NgbModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC8xnywTtZ7TX7poO3XKX1OazpnupqQQ7s'
+    })
   ],
   providers: [
     CookieService,

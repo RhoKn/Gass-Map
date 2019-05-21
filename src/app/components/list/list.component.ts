@@ -12,6 +12,9 @@ import { AuxService } from '../../services/aux.service';
 })
 export class ListComponent implements OnInit {
   public requests: any = [];
+  public favs: any =[];
+  public auxArr: any=[];
+  
   constructor(
     private rest:RestService,
     private cookieS:CookiesService,
@@ -19,53 +22,32 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.rest.getApiObjects().then(data => {
+    const user = this.auxS.decodeToken(this.cookieS.getCookie(global.cookiesDef.token));
+    this.rest.getAllObjects(global.uriRoutes.favorites + global.uriMethods.viewAll + '/' + user.sub).then(data => {
       if(data instanceof HttpErrorResponse){
         console.log(this.rest.httperrorHandling((data)).message);
       }else{
-        console.log(data);
-        let numeroRegex = /\No\.+.+[0-9]+/;
-        let coloniaRegex = /\Col+[^a-np-z]+.+/;
-        let calleRegex = /\No\.+.+[0-9]+.+/;
-
-        let colonia;
-        let numero;
-        let calle;
-        let ciudad;
-
-        data.results.forEach(element => {
-
-          element.colonia = element.calle.replace(calleRegex, "");
-
-          numero = numeroRegex.exec(data.calle);
-
-          if(!numero){
-            numero = "S/N";
-          }
-          
-          numero = numero.toString();
-
-          colonia = calleRegex.exec(data.calle);
-
-          if(!colonia){
-            colonia = "Not Available";
+        this.favs = data.foundedFavs;
+        console.log(this.favs);
+        this.rest.getAllObjects(global.uriRoutes.gasStations+global.uriMethods.viewAllBdGas).then(gasS => {
+          if(gasS instanceof HttpErrorResponse){
+            console.log(this.rest.httperrorHandling((gasS)).message);
           }else{
-            colonia = colonia.toString();
-            colonia = colonia.replace(numeroRegex, "");
-            colonia = colonia.replace("  ", "");
-          }
-
-          if(colonia == "Not Available"){
-            if(coloniaRegex.test(data.calle)){
-              colonia = coloniaRegex.exec(data.calle);
-              colonia = colonia.toString();
-
-              calle = calle.replace(colonia, "");
+            this.requests = gasS.gas;
+            console.log(this.requests)
+            for (let index = 0; index < this.favs.length; index++) {
+              for (let counter = 0; counter < this.requests.length; counter++) {
+                if(this.favs[index].gasolinera._id === this.requests[counter]._id){
+                  this.auxArr.push(counter);
+                  break;
+                }
+              }
             }
+            this.auxArr.forEach(element => {
+              this.requests.splice(element,1);
+            });
           }
-
         });
-        this.requests = data.results;
       }
     });
   }
@@ -73,7 +55,7 @@ export class ListComponent implements OnInit {
   addToFavorite(gas){
     const user = this.auxS.decodeToken(this.cookieS.getCookie(global.cookiesDef.token));
     const newObj = {
-      gasolinera: this.requests[gas].calle,
+      gasolinera: this.requests[gas]._id,
       user : user.sub
     };
     

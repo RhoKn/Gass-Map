@@ -6,9 +6,12 @@ export const global = {
     getOurData      : 'localhost:3000/gasStations/all',
     uriRoutes   :   {
                         users:  'users/',
-                        favorites: 'favs/'
+                        favorites: 'favs/',
+                        gasStations: 'gasStations/',
+                        comments    : 'comments/'
                     },
     uriMethods   :   {
+                        viewAllBdGas: 'allBd',
                         viewAll: 'all',
                         viewOne:  'view/',
                         update:  'update/',

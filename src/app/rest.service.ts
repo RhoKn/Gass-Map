@@ -50,9 +50,14 @@ export class RestService {
     return res;
   }
 
-  getObject(route, id): Observable<any> {
-    return this.http.get(global.url + route + id).pipe(
-      map(this.extractData));
+  async getObject(route, id){
+    let res;
+    try {
+      res = this.http.get(global.url + route + id).toPromise();
+    } catch (error) {
+      res = error;
+    }
+    return res;
   }
 
   updateObject(route, id, info): Observable<any> {
