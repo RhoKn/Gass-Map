@@ -1,0 +1,4 @@
+# Archivos que no son necesarios dentro de la imagen de Docker
+
+node_modules
+npm-debug.log

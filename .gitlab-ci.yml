@@ -3,6 +3,9 @@ image: node:latest
 stages:
   - build
   - test
+  - package
+  - push
+  - deploy
 
 install_dependencies:
   stage: build
@@ -19,3 +22,50 @@ cache:
 testing_unitTesting:
   stage: test
   script: npm run unitTesting
+
+# Instancias donde se corren las mismas lineas de comando en el script las veces que sean necesarias
+.extendjob:
+  script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker build -t registry.gitlab.com/301402/gass-map .
+    - docker push registry.gitlab.com/301402/gass-map
+
+# Escenario 'Package'
+# Se crea la imagen de la app
+build_image:
+  image: docker:latest
+  services:
+  - docker:dind
+  stage: package
+  extends: .extendjob
+
+# Escenario 'Push'
+# Se inicia sesión en el repositorio de Gitlab para 'pushear' la imagen.
+# Se inicia sesión en Heroku y 'pusheamos' la imagen al registro de contenedores de Heroku.
+push_to_heroku:
+  image: docker:latest
+  stage: push
+  services:
+  - docker:dind
+  extends: .extendjob
+  script:
+    # Gitlab:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker pull registry.gitlab.com/301402/gass-map:latest
+    # Heroku:
+    # Se define el Token de autenticación de Heroku del proyecto en el campo 'password'. Comando: 'heroku auth:token'
+    - docker login --username=_  --password=58ccdc04-002d-4ef2-95c0-24a4ef0e42dd registry.heroku.com
+    - docker tag registry.gitlab.com/301402/gass-map:latest registry.heroku.com/gass-map/web:latest
+    - docker push registry.heroku.com/gass-map/web:latest
+
+# Escenario 'Deploy'
+# Se lanza la imagen del registro de contenedores de Heroku.
+deploy_to_heroku:
+  image: node:latest
+  stage: deploy
+  services:
+  - docker:dind
+  extends: .extendjob
+  script:
+    - npm install -g heroku
+    - heroku container:release web --app gass-map
