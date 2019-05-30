@@ -42,3 +42,10 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Testing logs
+chromedriver.log
+geckodriver.log
+/tests_output
+/reports
+selenium_server.log
