@@ -64,7 +64,7 @@
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
     "mocha": "^6.1.4",
-    "nightwatch": "^1.0.19",
+    "nightwatch": "^1.7.13",
     "protractor": "~5.4.0",
     "request": "^2.88.0",
     "selenium-server": "^3.141.59",
